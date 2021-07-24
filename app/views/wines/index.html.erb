@@ -23,14 +23,19 @@
           </ul>
         </td>
         <td><%= link_to 'Show', wine %></td>
-        <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
-        <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %> 
+          <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
+          <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'Nuevo Vino', new_wine_path %>
-<%= link_to 'Nueva Cepa', new_strain_path %>
+<% if current_user.admin? %>
+  <%= link_to 'Nuevo Vino', new_wine_path %>
+  <%= link_to 'Nueva Cepa', new_strain_path %>
+<% end %>
+<br>
+<%= button_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-light mx-4'  %>
