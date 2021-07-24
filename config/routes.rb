@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :positions
+  resources :magazines
+  resources :oenologists
   devise_for :users, controllers: {
         sessions: 'users/sessions'
  }
