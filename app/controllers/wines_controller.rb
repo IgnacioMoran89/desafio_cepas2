@@ -1,7 +1,7 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: %i[ show edit update destroy ]
   before_action :only_strains_availables, only: [:new, :edit]
-  before_action :authorize_admin!, except: [:index]
+  #before_action :authorize_admin!, except: [:index]
   before_action :authenticate_user! 
 
 
@@ -23,6 +23,7 @@ class WinesController < ApplicationController
   # GET /wines/1/edit
   def edit
     @strains = Strain.all
+    @oenologists = Oenologist.order(:age)
   end
 
   # POST /wines or /wines.json
@@ -45,6 +46,8 @@ class WinesController < ApplicationController
   def update
     respond_to do |format|
       if @wine.update(wine_params)
+        @wine.oenologists.destroy
+        @wine.oenologists << Oenologist.where(id: params[:wine])
         @wine.addStrainPercent(params[:wine][:strains_percent])
         format.html { redirect_to @wine, notice: "Wine was successfully updated." }
         format.json { render :show, status: :ok, location: @wine }
@@ -72,7 +75,7 @@ class WinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wine_params
-      params.require(:wine).permit(:name, {strain_ids: []}, :strains_percent )
+      params.require(:wine).permit(:name, {strain_ids: []}, :strains_percent, :grade, :oenologists)
     end
 
     def only_strains_availables

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :oenologists
   devise_for :users, controllers: {
         sessions: 'users/sessions'
- }
+}
 
     
   devise_for :installs

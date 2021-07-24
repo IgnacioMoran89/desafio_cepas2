@@ -2,6 +2,9 @@ class Wine < ApplicationRecord
     has_many :wines_strains, dependent: :destroy
     has_many :strains, through: :wines_strains
 
+    has_many :oenologist_wines, dependent: :destroy
+    has_many :oenologists, through: :oenologist_wines
+
     accepts_nested_attributes_for :wines_strains, reject_if: :all_blank, allow_destroy: true
 
     def addStrainPercent(percents)

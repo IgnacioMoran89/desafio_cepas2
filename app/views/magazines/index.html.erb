@@ -23,5 +23,8 @@
 </table>
 
 <br>
-
-<%= link_to 'New Magazine', new_magazine_path %>
+<% if current_user.admin? %>
+  <%= link_to 'New Magazine', new_magazine_path %>
+  <%= link_to 'Nuevo Enólogo', new_oenologist_path %>
+  <%= link_to 'Nuevo Vino', new_wine_path %>
+<% end %>
