@@ -21,4 +21,12 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Heroku: https://cepas2appdesaflatam.herokuapp.com/
+
+* Para crear role de ADM, usar consola 
+* User.last
+* User = _
+* User. admin = true
+* User.save
+
+
