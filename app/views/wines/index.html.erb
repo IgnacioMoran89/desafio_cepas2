@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Strains</th>
       <th>Grade</th>
+  
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +25,8 @@
           </ul>
         </td>
         <td><%= wine.grade %></td>
+
+
         <td><%= link_to 'Show', wine %></td>
         <% if current_user.admin? %> 
           <td><%= link_to 'Edit', edit_wine_path(wine) %></td>

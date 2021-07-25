@@ -17,7 +17,7 @@ class Oenologist < ApplicationRecord
             jobs.each do |j|
                 temp_moj = OenologistPositionMagazine.new
                 temp_moj.magazine = Magazine.find(m.to_i)
-                temp_moj.position = JobTitle.find(j.to_i)
+                temp_moj.position = Position.find(j.to_i)
                 temp_moj.oenologist = self
                 temp_moj.save
             end

@@ -25,7 +25,7 @@ class OenologistsController < ApplicationController
 
     respond_to do |format|
       if @oenologist.save
-        @oenologist.set_references(params[:positions])
+        
         format.html { redirect_to @oenologist, notice: "Oenologist was successfully created." }
         format.json { render :show, status: :created, location: @oenologist }
       else
