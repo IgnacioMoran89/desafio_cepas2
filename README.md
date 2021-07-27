@@ -23,6 +23,8 @@ Things you may want to cover:
 
 * Heroku: https://cepas2appdesaflatam.herokuapp.com/
 
+Datos administrador --> Correo: moran.ua@gmail.com  ,  clave: 123456
+
 * Para crear role de ADM, usar consola 
 * User.last
 * User = _
